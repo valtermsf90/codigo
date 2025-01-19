@@ -35,39 +35,41 @@ int main()
     contLinha = 0;
     contColuna = 0;
     int posicaoPalavra = 0;
-    
-    while (true)    // Loop principal
-    {   
-        tela = 1;  
-        sleep_ms(3000); 
-        printf("%b\n", tela);
+
+    while (true) // Loop principal
+    {
+        tela = 1;
+        sleep_ms(3000);
         while (tela == 1)
         {
-            
+            printf("+=====================================+\n");
+            printf("|            Matrix Writer            |\n");
+            printf("|  Controle a matriz, crie palavras   |\n");
+            printf("+=====================================+\n\n");
+
             printf("Aperte o botao A, a quantidade de vezes referente a numero da linha.\n");
             printf("Aperte o botao B, a quantidade de vezes referente a letra da coluna.\n");
-            printf("Aperte o botao J para imprimir o codigo.\n\n");
+            printf("Aperte o botao J para imprimir a letra.\n\n");
+            printf("Para espaço aperte  A 6x(led vermelho).\n");
+            printf("Para enter aperte  B 6x(led rosa).\n\n");
             printf(" # | 0 | 1 | 2 | 3 | 4 | 5 |\n");
-            printf("_____________________________\n");
-            printf(" 0 | A | B | C | D | E | F |\n");
-            printf("_____________________________\n");
-            printf(" 1 | G | H | I | J | K | L |\n");
-            printf("_____________________________\n");
-            printf(" 2 | M | N | O | P | Q | R |\n");
-            printf("_____________________________\n");
-            printf(" 3 | S | T | U | V | W | X |\n");
-            printf("_____________________________\n");
-            printf(" 4 | Y | Z | 0 | 1 | 2 | 3 |\n");
-            printf("_____________________________\n");
-            printf(" 5 | 4 | 5 | 6 | 7 | 8 | 9 |\n");
-            printf("_____________________________\n");
-            printf("\n\n");
+            printf("---|-V-+-V-+-V-+-V-+-V-+-V-|\n");
+            for (int i = 0; i < 6; i++)
+            {
+                printf(" %d >", i);
+                for (int j = 0; j < 6; j++)
+                {
+                    printf(" %c |", matriz[i][j]);
+                }
+                printf("\n");
+                printf("---|---+---+---+---+---+---|\n");
+            }
             tela = 0;
         }
+        printf("\n\n\n");
 
-
-       // printf("\033[2J"); // Limpa a tela (ANSI escape code)
-        //printf("\033[H");  // Move o cursor para o canto superior esquerdo
+        // printf("\033[2J"); // Limpa a tela (ANSI escape code)
+        // printf("\033[H");  // Move o cursor para o canto superior esquerdo
 
         while (escrever)
         {
@@ -109,7 +111,7 @@ int main()
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        vermelho(100);
+                        rosa(100);
                         apagado(0);
                     }
                     contColuna = 6;
@@ -123,7 +125,8 @@ int main()
                     verde(100);
                     apagado(0);
                 }
-                if (contLinha < 6 && contColuna < 6){
+                if (contLinha < 6 && contColuna < 6)
+                {
                     letra = matriz[contLinha][contColuna];
                 }
                 if (contColuna == 6)
@@ -134,17 +137,11 @@ int main()
                 {
                     letra = '\n';
                 }
-                
-                
+
                 contLinha = 0;
                 contColuna = 0;
                 printf("%c", letra);
-               
-             } 
-
-            
+            }
         }
-        
     }
 }
-
