@@ -40,7 +40,7 @@ int main()
     {
         tela = 1;
         sleep_ms(3000);
-        while (tela == 1)
+        while (tela == 1) // Loop da tela
         {
             printf("+=====================================+\n");
             printf("|            Matrix Writer            |\n");
@@ -50,19 +50,19 @@ int main()
             printf("Aperte o botao A, a quantidade de vezes referente a numero da linha.\n");
             printf("Aperte o botao B, a quantidade de vezes referente a letra da coluna.\n");
             printf("Aperte o botao J para imprimir a letra.\n\n");
-            printf("Para espaço aperte  A 6x(led vermelho).\n");
-            printf("Para enter aperte  B 6x(led rosa).\n\n");
-            printf(" # | 0 | 1 | 2 | 3 | 4 | 5 |\n");
-            printf("---|-V-+-V-+-V-+-V-+-V-+-V-|\n");
-            for (int i = 0; i < 6; i++)
+            printf("Para pular linha aperte  A 7x(led vermelho).\n");
+            printf("Para espaço aperte  B 7x(led rosa).\n\n");
+            printf(" # | 0 | 1 | 2 | 3 | 4 | 5 | 6 |\n");
+            printf("---|-V-+-V-+-V-+-V-+-V-+-V-+-V-|\n");
+            for (int i = 0; i < 7; i++)
             {
                 printf(" %d >", i);
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < 7; j++)
                 {
                     printf(" %c |", matriz[i][j]);
                 }
                 printf("\n");
-                printf("---|---+---+---+---+---+---|\n");
+                printf("---|---+---+---+---+---+---+---|\n");
             }
             tela = 0;
         }
@@ -76,9 +76,9 @@ int main()
             if (gpio_get(BUTTON_A) == 0)
             {
                 sleep_ms(50);
-                if (contLinha < 6)
+                if (contLinha < 7)
                 {
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 2; i++)// piscar
                     {
                         azul(100);
                         apagado(0);
@@ -87,20 +87,20 @@ int main()
                 }
                 else
                 {
-                    for (int i = 0; i < 4; i++)
+                    for (int i = 0; i < 4; i++)// piscar
                     {
                         vermelho(100);
                         apagado(0);
                     }
-                    contLinha = 6;
+                    contLinha = 7;
                 }
             }
             if (gpio_get(BUTTON_B) == 0)
             {
                 sleep_ms(50);
-                if (contColuna < 6)
+                if (contColuna < 7)
                 {
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < 2; i++)// piscar
                     {
                         amarelo(100);
                         apagado(0);
@@ -109,34 +109,34 @@ int main()
                 }
                 else
                 {
-                    for (int i = 0; i < 4; i++)
+                    for (int i = 0; i < 4; i++)// piscar
                     {
                         rosa(100);
                         apagado(0);
                     }
-                    contColuna = 6;
+                    contColuna = 7;
                 }
             }
             if (gpio_get(BUTTON_J) == 0)
             {
                 sleep_ms(50);
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 2; i++)// piscar
                 {
                     verde(100);
                     apagado(0);
                 }
-                if (contLinha < 6 && contColuna < 6)
-                {
-                    letra = matriz[contLinha][contColuna];
-                }
-                if (contColuna == 6)
-                {
-                    letra = ' ';
-                }
-                if (contLinha == 6)
-                {
-                    letra = '\n';
-                }
+                if (contLinha < 7 && contColuna < 7)
+                    {
+                        letra = matriz[contLinha][contColuna];
+                    }
+                    if (contColuna == 7)
+                    {
+                        letra = ' ';
+                    }
+                    if (contLinha == 7)
+                    {
+                        letra = '\n';
+                    }
 
                 contLinha = 0;
                 contColuna = 0;
