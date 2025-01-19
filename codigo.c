@@ -34,12 +34,12 @@ int main()
     contLinha = 0;
     contColuna = 0;
     int posicaoPalavra = 0;
+    
     while (true)    
     {        
-        while (escrever)
+        /*while (escrever)
         {
-            sleep_ms(5000);
-            printf("Bem vindo gerado de Codigos\n");
+            
             printf("Aperte o botao A, a quantidade de vezes referente a numero da linha.\n");
             printf("Aperte o botao B, a quantidade de vezes referente a letra da coluna.\n");
             printf("Aperte o botao J para imprimir o codigo.\n\n");
@@ -59,7 +59,7 @@ int main()
             printf("_____________________________\n");
             printf("\n\n");
             escrever = false;
-        }
+        }*/
 
 
        // printf("\033[2J"); // Limpa a tela (ANSI escape code)
@@ -69,11 +69,12 @@ int main()
         {
             if (gpio_get(BUTTON_A) == 0)
             {
+                sleep_ms(50);
                 if (contLinha < 6)
                 {
                     for (int i = 0; i < 2; i++)
                     {
-                        azul(TIME);
+                        azul(100);
                         apagado(0);
                     }
                     contLinha = contLinha + 1;
@@ -82,7 +83,7 @@ int main()
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        vermelho(TIME);
+                        vermelho(100);
                         apagado(0);
                     }
                     contLinha = 6;
@@ -90,11 +91,12 @@ int main()
             }
             if (gpio_get(BUTTON_B) == 0)
             {
+                sleep_ms(50);
                 if (contColuna < 6)
                 {
                     for (int i = 0; i < 2; i++)
                     {
-                        amarelo(TIME);
+                        amarelo(100);
                         apagado(0);
                     }
                     contColuna = contColuna + 1;
@@ -103,7 +105,7 @@ int main()
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        vermelho(TIME);
+                        vermelho(100);
                         apagado(0);
                     }
                     contColuna = 6;
@@ -111,19 +113,25 @@ int main()
             }
             if (gpio_get(BUTTON_J) == 0)
             {
+                sleep_ms(50);
                 for (int i = 0; i < 2; i++)
                 {
-                    verde(TIME);
+                    verde(100);
                     apagado(0);
                 }
-                if (contLinha == 0 || contColuna == 0)
-                {
+                if (contLinha < 6 && contColuna < 6){
                     letra = matriz[contLinha][contColuna];
                 }
-                else if (contLinha > 0 && contColuna > 0)
+                if (contColuna == 6)
                 {
-                    letra = matriz[contLinha - 1][contColuna - 1];
+                    letra = ' ';
                 }
+                if (contLinha == 6)
+                {
+                    letra = '\n';
+                }
+                
+                
                 contLinha = 0;
                 contColuna = 0;
                 printf("%c", letra);
