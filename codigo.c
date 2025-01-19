@@ -4,7 +4,6 @@
 #include "include/cores.c"
 #include "include/buzzers.c"
 #include "include/KeyPad.c"
-#include "C/perguntas.c"
 #include "C/frases.c"
 
 #define LED_R 13
