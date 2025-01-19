@@ -20,6 +20,7 @@ char letra;
 int contLinha = 0;
 int contColuna = 0;
 int botao;
+bool tela;
 bool escrever = true;
 char palavra[50];
 int x = 0;
@@ -35,9 +36,12 @@ int main()
     contColuna = 0;
     int posicaoPalavra = 0;
     
-    while (true)    
-    {        
-        /*while (escrever)
+    while (true)    // Loop principal
+    {   
+        tela = 1;  
+        sleep_ms(3000); 
+        printf("%b\n", tela);
+        while (tela == 1)
         {
             
             printf("Aperte o botao A, a quantidade de vezes referente a numero da linha.\n");
@@ -58,8 +62,8 @@ int main()
             printf(" 5 | 4 | 5 | 6 | 7 | 8 | 9 |\n");
             printf("_____________________________\n");
             printf("\n\n");
-            escrever = false;
-        }*/
+            tela = 0;
+        }
 
 
        // printf("\033[2J"); // Limpa a tela (ANSI escape code)
