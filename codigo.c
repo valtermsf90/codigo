@@ -16,15 +16,15 @@
 #define BUTTON_B 6
 #define BUTTON_J 22
 #define TIME 300
+
+char palavra[50];
 char letra;
+
 int contLinha = 0;
 int contColuna = 0;
-int botao;
+
 bool tela;
 bool escrever = true;
-char palavra[50];
-int x = 0;
-
 
 int main()
 {
@@ -33,7 +33,6 @@ int main()
     printf("%d\n", contLinha);
     printf("%d\n", contColuna);
     sleep_ms(1000);
-    
 
     while (true) // Loop principal
     {
@@ -66,10 +65,8 @@ int main()
             tela = 0;
         }
         printf("\n\n");
-
         // printf("\033[2J"); // Limpa a tela (ANSI escape code)
-        // printf("\033[H");  // Move o cursor para o canto superior esquerdo
-
+        // printf("\033[H");  // Move o cursor para o canto superior esquerd
         while (escrever)
         {
             if (gpio_get(BUTTON_A) == 0)
@@ -77,7 +74,7 @@ int main()
                 sleep_ms(50);
                 if (contLinha < 7)
                 {
-                    for (int i = 0; i < 2; i++)// piscar
+                    for (int i = 0; i < 2; i++) // piscar
                     {
                         azul(100);
                         apagado(0);
@@ -86,7 +83,7 @@ int main()
                 }
                 else
                 {
-                    for (int i = 0; i < 4; i++)// piscar
+                    for (int i = 0; i < 4; i++) // piscar
                     {
                         vermelho(100);
                         apagado(0);
@@ -99,7 +96,7 @@ int main()
                 sleep_ms(50);
                 if (contColuna < 7)
                 {
-                    for (int i = 0; i < 2; i++)// piscar
+                    for (int i = 0; i < 2; i++) // piscar
                     {
                         amarelo(100);
                         apagado(0);
@@ -108,7 +105,7 @@ int main()
                 }
                 else
                 {
-                    for (int i = 0; i < 4; i++)// piscar
+                    for (int i = 0; i < 4; i++) // piscar
                     {
                         rosa(100);
                         apagado(0);
@@ -119,23 +116,23 @@ int main()
             if (gpio_get(BUTTON_J) == 0)
             {
                 sleep_ms(50);
-                for (int i = 0; i < 2; i++)// piscar
+                for (int i = 0; i < 2; i++) // piscar
                 {
                     verde(100);
                     apagado(0);
                 }
                 if (contLinha < 7 && contColuna < 7)
-                    {
-                        letra = matriz[contLinha][contColuna];
-                    }
-                    if (contColuna == 7)
-                    {
-                        letra = ' ';
-                    }
-                    if (contLinha == 7)
-                    {
-                        letra = '\n';
-                    }
+                {
+                    letra = matriz[contLinha][contColuna];
+                }
+                if (contColuna == 7)
+                {
+                    letra = ' ';
+                }
+                if (contLinha == 7)
+                {
+                    letra = '\n';
+                }
 
                 contLinha = 0;
                 contColuna = 0;
