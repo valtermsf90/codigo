@@ -25,6 +25,7 @@ bool escrever = true;
 char palavra[50];
 int x = 0;
 
+
 int main()
 {
     stdio_init_all(); // Inicializa a biblioteca stdio
@@ -32,9 +33,7 @@ int main()
     printf("%d\n", contLinha);
     printf("%d\n", contColuna);
     sleep_ms(1000);
-    contLinha = 0;
-    contColuna = 0;
-    int posicaoPalavra = 0;
+    
 
     while (true) // Loop principal
     {
