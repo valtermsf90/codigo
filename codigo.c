@@ -66,7 +66,7 @@ int main()
             }
             tela = 0;
         }
-        printf("\n\n\n");
+        printf("\n\n");
 
         // printf("\033[2J"); // Limpa a tela (ANSI escape code)
         // printf("\033[H");  // Move o cursor para o canto superior esquerdo
