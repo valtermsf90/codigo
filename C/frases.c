@@ -4,8 +4,7 @@
 #include <time.h>
 #include "frases.h"
 
-int linha[6] ={1, 2, 3, 4, 5, 6};
-int coluna[6] = {1, 2, 3, 4, 5, 6};
+
 
 char matriz[6][6] = {
 				{'A', 'B', 'C', 'D', 'E', 'F'},
