@@ -116,7 +116,7 @@ int main()
             if (gpio_get(BUTTON_J) == 0)
             {
                 sleep_ms(50);
-                for (int i = 0; i < 2; i++) // piscar
+                for (int i = 0; i < 4; i++) // piscar
                 {
                     verde(100);
                     apagado(0);
