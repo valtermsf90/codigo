@@ -17,11 +17,14 @@
 #define TIME 300
 
 char palavra[50];
-char letra;
+char letra[50];
+char marcador = '<';
 
 int contLinha = 0;
 int contColuna = 0;
-
+int x = 0;
+int y = 0;
+int pos = 0;
 bool tela;
 bool escrever = true;
 
@@ -36,7 +39,7 @@ int main()
     while (true) // Loop principal
     {
         tela = 1;
-        sleep_ms(3000);
+        sleep_ms(100);
         while (tela == 1) // Loop da tela
         {
             printf("+=====================================+\n");
@@ -56,7 +59,15 @@ int main()
                 printf(" %d >", i);
                 for (int j = 0; j < 7; j++)
                 {
-                    printf(" %c |", matriz[i][j]);
+                    if (x == i && y == j)
+                    {
+                        marcador = '*';
+                    }
+                    else
+                    {
+                        marcador = ' ';
+                    }
+                    printf("%c%c%c|", marcador, matriz[i][j], marcador);
                 }
                 printf("\n");
                 printf("---|---+---+---+---+---+---+---|\n");
@@ -64,8 +75,11 @@ int main()
             tela = 0;
         }
         printf("\n\n");
-        // printf("\033[2J"); // Limpa a tela (ANSI escape code)
-        // printf("\033[H");  // Move o cursor para o canto superior esquerd
+        for (int i = 0; i < pos; i++)
+        {
+            printf("%c", letra[i]);
+        }
+
         while (escrever)
         {
             if (gpio_get(BUTTON_A) == 0)
@@ -122,21 +136,25 @@ int main()
                 }
                 if (contLinha < 7 && contColuna < 7)
                 {
-                    letra = matriz[contLinha][contColuna];
+                    letra[pos] = matriz[contLinha][contColuna];
                 }
                 if (contColuna == 7)
                 {
-                    letra = ' ';
+                    letra[pos] = ' ';
                 }
                 if (contLinha == 7)
                 {
-                    letra = '\n';
+                    letra[pos] = '\n';
                 }
-
+                pos++;
                 contLinha = 0;
                 contColuna = 0;
-                printf("%c", letra);
+                printf("\033[2J");
+                printf("\033[H");
+                escrever = false;
             }
         }
+    tela = 1;
+    escrever = 1;
     }
 }
