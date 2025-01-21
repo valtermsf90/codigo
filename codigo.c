@@ -18,7 +18,8 @@
 
 char palavra[50];
 char letra[50];
-char marcador;
+char marcadorE;
+char marcadorD;
 
 int contLinha = 0;
 int contColuna = 0;
@@ -39,7 +40,7 @@ int main()
     while (true) // Loop principal
     {
         tela = 1;
-        sleep_ms(100);
+       
         while (tela == 1) // Loop da tela
         {
             printf("+=====================================+\n");
@@ -61,13 +62,15 @@ int main()
                 {
                     if (x == i && y == j)
                     {
-                        marcador = '-';
+                        marcadorE = '[';
+                        marcadorD = ']';
                     }
                     else
                     {
-                        marcador = ' ';
+                        marcadorE = ' ';
+                        marcadorD = ' ';
                     }
-                    printf("%c%c%c|", marcador, matriz[i][j], marcador);
+                    printf("%c%c%c|", marcadorE, matriz[i][j], marcadorD);
                 }
                 printf("\n");
                 printf("---|---+---+---+---+---+---+---|\n");
@@ -142,6 +145,7 @@ int main()
                     verde(100);
                     apagado(0);
                 }
+                
                 if (contLinha < 7 && contColuna < 7)
                 {
                     letra[pos] = matriz[contLinha][contColuna];
@@ -153,6 +157,10 @@ int main()
                 if (contLinha == 7)
                 {
                     letra[pos] = '\n';
+                }
+                if(contLinha == 6 && contColuna == 6){
+                    pos--;                    
+                    letra[pos] =  matriz[contLinha][contColuna];
                 }
                 pos++;
                 contLinha = 0;
