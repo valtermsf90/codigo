@@ -18,7 +18,7 @@
 
 char palavra[50];
 char letra[50];
-char marcador = '<';
+char marcador;
 
 int contLinha = 0;
 int contColuna = 0;
@@ -61,7 +61,7 @@ int main()
                 {
                     if (x == i && y == j)
                     {
-                        marcador = '*';
+                        marcador = '-';
                     }
                     else
                     {
@@ -93,6 +93,10 @@ int main()
                         apagado(0);
                     }
                     contLinha = contLinha + 1;
+                    x = contLinha;
+                    printf("\033[2J");
+                printf("\033[H");
+                escrever = false;
                 }
                 else
                 {
@@ -115,6 +119,10 @@ int main()
                         apagado(0);
                     }
                     contColuna = contColuna + 1;
+                    y = contColuna;
+                    printf("\033[2J");
+                    printf("\033[H");
+                    escrever = false;
                 }
                 else
                 {
@@ -148,7 +156,9 @@ int main()
                 }
                 pos++;
                 contLinha = 0;
+                x = contLinha;
                 contColuna = 0;
+                y = contColuna;
                 printf("\033[2J");
                 printf("\033[H");
                 escrever = false;
